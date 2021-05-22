@@ -7,57 +7,67 @@ function App() {
   return (
     <>
       <header>
-        {data.header}
+        <img src={data.header} alt={data.headerDescription} />
       </header>
 
       <main>
         {data.magazines.map( issue => 
-          <div className="cover">
-            <img src={issue.image} alt={issue.imageDescription} />
-            { issue.issuesRemaining > 0 ? (
-              <>
-                <p>Issue #{issue.issueNumber}</p>
-                <p>
-                  <a href={issue.buyLink}>BUY HERE</a>
-                </p>
-                <p>
-                  or in <a href={data.selectedStores}>selected stores</a>.
-                </p>
-              </>
-            ) : (
-              <>
-                <p>Issue #{issue.issueNumber} is sold out.</p>
-                <p>
-                  If you are lucky, you may get the last pieces in <a href={data.selectedStores}>selected stores</a>.
-                </p>
-              </>
-            )}
-            
-          </div>  
+        <div className="wrapper">
+          <div className="issue">
+            <div className="cover" id={`issue` + issue.issueNumber}>
+              <img src={issue.image} alt={issue.imageDescription} />
+              { issue.issuesRemaining > 0 ? (
+                <>
+                  <p className="largeText">Issue #{issue.issueNumber}</p>
+                  <p className="buy smallText">
+                    <a href={issue.buyLink}>BUY HERE</a>
+                  </p>
+                  <p className="smallText">
+                    or in <a href={data.selectedStores}>selected stores</a>.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="largeText">Issue #{issue.issueNumber} is sold out.</p>
+                  <p className="smallText">
+                    If you are lucky, you may get the last pieces in <a href={data.selectedStores}>selected stores</a>.
+                  </p>
+                </>
+              )}
+              
+            </div>  
+          </div>
+        </div>
+        
+          
         )}
       </main>
       
       <footer>
-        <p className="description">
-          {data.description.text}
-          <span className="copyright">
-            &copy; {data.description.copyright}
-            <a href={data.description.publisherLink} target="_blank" rel="noreferrer">
-              {data.description.publisher}
-            </a>
+        <div className="description largeText">
+          <p className="footerText">{data.description.text}</p>
+          <p className="copyright">&copy; {data.description.copyright}
+            <span>
+              <a href={data.description.publisherLink} target="_blank" rel="noreferrer">
+                {data.description.publisher}
+              </a>
+            </span>
+          </p>
+          <p className="privacyPolicy">
             <a href={data.privacyPolicy} target="_blank" rel="noreferrer">
               Privacy policy
             </a>
-          </span>
-        </p>
+          </p>
+        </div>
+
         <div className="info">
-          <p className="contact">
+          <p className="contact largeText">
             <a href={`mailto:` + data.email}>{data.email}</a>
           </p>
-          <ul>
+          <ul class="menu">
             {data.magazines.map( issue => 
               <li key={uuid()}>
-                <a href={`issue` + issue.issueNumber}>
+                <a href={`#issue` + issue.issueNumber}>
                   {`Issue #` + issue.issueNumber}
                 </a>
               </li>

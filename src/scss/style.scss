@@ -6,3 +6,91 @@
 @import "./base/reset";
 @import "./base/variables";
 
+* {
+    font-family: 'Roboto', sans-serif;
+    background-color: $lightblue;
+    color: $black;
+}
+
+header {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    padding-top: 20px;
+
+    img {
+        width: 160px;
+    }
+}
+
+.description a {
+    color: $black;
+    text-decoration: underline;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .issue {
+        padding-top: 35px;
+        
+        .cover {
+            text-align: center;
+        
+            img { 
+                width: 80%; 
+                max-width: 420px;
+                height: auto;
+                margin: 0 auto;
+            }
+
+            a { color: $white; }
+
+            .buy { text-transform: uppercase; }
+        }
+    }
+}
+
+.smallText {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 22px;
+    margin-bottom: 1em;
+    padding-top: 3px;
+}
+
+.largeText {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+    margin-bottom: 1em;
+}
+
+footer {
+    .description { 
+        text-align: center; 
+        padding: 0 15px;
+
+        .copyright {
+            font-size: 12px;
+            font-weight: normal;
+            margin-top: .5em;
+        }
+        .privacyPolicy { margin-top: 1.5em; }
+
+        a:hover { text-decoration: none; }
+    }
+
+    .info {
+        .contact {
+            text-align: center;
+            margin: 3em 0 4em;
+        }
+        .menu {
+            display: none;
+        }
+    }
+}

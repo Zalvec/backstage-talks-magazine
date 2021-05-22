@@ -1,5 +1,6 @@
 const data = {
-    "header": "Backstage talks",
+    "header": "./images/logo.png",
+    "headerDescription": "Logo",
     "email": "info@backstagetalks.com",
     "description": {
         "text": "Backstage Talks is a magazine of casual, but in depth dialogues on design and business. Our decisions shape and influence this complex world-to have a chance to make the right ones, we need to talk.",
