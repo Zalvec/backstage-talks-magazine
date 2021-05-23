@@ -2,7 +2,8 @@ import './scss/style.scss'
 import data from './data'
 import { v4 as uuid } from 'uuid'
 
-console.log()
+
+
 function App() {
   return (
     <>
@@ -10,11 +11,11 @@ function App() {
         <img src={data.header} alt={data.headerDescription} />
       </header>
 
-      <main>
+      <main id="fullPage">
         {data.magazines.map( issue => 
-        <div className="wrapper">
+        <div className="wrapper" key={uuid()} id={`issue` + issue.issueNumber}>
           <div className="issue">
-            <div className="cover" id={`issue` + issue.issueNumber}>
+            <div className="cover">
               <img src={issue.image} alt={issue.imageDescription} />
               { issue.issuesRemaining > 0 ? (
                 <>
@@ -64,7 +65,7 @@ function App() {
           <p className="contact largeText">
             <a href={`mailto:` + data.email}>{data.email}</a>
           </p>
-          <ul class="menu">
+          <ul className="menu">
             {data.magazines.map( issue => 
               <li key={uuid()}>
                 <a href={`#issue` + issue.issueNumber}>
