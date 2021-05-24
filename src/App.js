@@ -1,49 +1,63 @@
+import { useState, useEffect } from 'react'
 import './scss/style.scss'
 import data from './data'
 import { v4 as uuid } from 'uuid'
+import {SectionsContainer, Section} from 'react-fullpage';
 
+export default function App() {
 
+  //fullpage
+  let options = {
+    activeClass: 'active',
+    anchors: ['issue5', 'issue4', 'issue3', 'issue2', 'issue1'],
+    arrowNavigation: true,
+    delay: 1000,
+    navigation: false,
+    scrollBar: window.innerWidth >= 992 && window.innerHeight >= 650 ? false : true,
+    autoScrolling: true,
+    verticalAlign: true,
+  }
 
-function App() {
   return (
     <>
       <header>
         <img src={data.header} alt={data.headerDescription} />
       </header>
 
-      <main id="fullPage">
+      <SectionsContainer {...options}>
         {data.magazines.map( issue => 
-        <div className="wrapper" key={uuid()} id={`issue` + issue.issueNumber}>
-          <div className="issue">
-            <div className="cover">
-              <img src={issue.image} alt={issue.imageDescription} />
-              { issue.issuesRemaining > 0 ? (
-                <>
-                  <p className="largeText">Issue #{issue.issueNumber}</p>
-                  <p className="buy smallText">
-                    <a href={issue.buyLink}>BUY HERE</a>
-                  </p>
-                  <p className="smallText">
-                    or in <a href={data.selectedStores}>selected stores</a>.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p className="largeText">Issue #{issue.issueNumber} is sold out.</p>
-                  <p className="smallText">
-                    If you are lucky, you may get the last pieces in <a href={data.selectedStores}>selected stores</a>.
-                  </p>
-                </>
-              )}
-              
-            </div>  
-          </div>
-        </div>
-        
-          
+          <Section 
+            className="wrapper" 
+            key={uuid()} 
+          >
+            <div className="issue">
+              <div className="cover">
+                <img src={issue.image} alt={issue.imageDescription} />
+                { issue.issuesRemaining > 0 ? (
+                  <>
+                    <p className="largeText">Issue #{issue.issueNumber}</p>
+                    <p className="buy smallText">
+                      <a href={issue.buyLink}>BUY HERE</a>
+                    </p>
+                    <p className="smallText">
+                      or in <a href={data.selectedStores}>selected stores</a>.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="largeText">Issue #{issue.issueNumber} is sold out.</p>
+                    <p className="smallText">
+                      If you are lucky, you may get the last pieces in <a href={data.selectedStores}>selected stores</a>.
+                    </p>
+                  </>
+                )}
+                
+              </div>  
+            </div>
+          </Section>
         )}
-      </main>
-      
+      </SectionsContainer>
+                 
       <footer>
         <div className="description largeText">
           <p className="footerText">{data.description.text}</p>
@@ -79,5 +93,3 @@ function App() {
     </>
   );
 }
-
-export default App;

@@ -8,8 +8,11 @@
 
 * {
     font-family: 'Roboto', sans-serif;
-    background-color: $lightblue;
     color: $black;
+}
+
+body {
+    background-color: $lightblue;
 }
 
 header {
@@ -17,10 +20,9 @@ header {
     left: 15px;
     top: 0;
     padding-top: 20px;
+    z-index: 2;
 
-    img {
-        width: 160px;
-    }
+    img { width: 160px; }
 }
 
 .description a {
@@ -72,6 +74,7 @@ footer {
     .description { 
         text-align: center; 
         padding: 0 15px;
+        background-color: transparent;
 
         .footerText { background-color: transparent; }
 
@@ -86,13 +89,15 @@ footer {
     }
 
     .info {
+        background-color: transparent;
+
         .contact {
             text-align: center;
             margin: 3em 0 4em;
         }
         .menu {
             display: none;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             right: 15px;
             width: 200px;
@@ -100,9 +105,17 @@ footer {
             font-size: 18px;
             text-align: right;
             margin-bottom: 1em;
+
+            .active { font-weight: bold; }
         }
     }
 }
+
+.fp-issue1 { background: $red;}
+.fp-issue2 { background: $darkblue; }
+.fp-issue3 { background: $yellow; }
+.fp-issue4 { background: $orange; }
+.fp-issue5 { background: $lightblue; }
 
 @media screen and (min-width: 543px) {
     .wrapper .issue .cover img { width: 420px; }
@@ -135,30 +148,37 @@ footer {
 }
 
 @media screen and (min-width: 992px) and (min-height: 650px) {
-    body { overflow: hidden; }
-    
+    //scrolling
+
+    ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+
+    //main content
+    .wrapper .issue { padding-top: 0; }
+
+    //positioning header & footer
     header {
-        position: absolute;
+        position: fixed;
         padding-top: 20px;
         left: 15px;
         top: 0;
     }
 
-    .wrapper .issue { padding-top: 0; }
-
     footer {
         .description {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
-            background-color: transparent;
+            
             width: 320px;
         }
         .info {
             position: unset;
 
             .contact {
-                position: absolute;
+                position: fixed;
                 right: 15px;
                 top: 20px;
             }
