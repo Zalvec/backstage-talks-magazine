@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import './scss/style.scss'
 import data from './data'
 import { v4 as uuid } from 'uuid'
-import {SectionsContainer, Section} from 'react-fullpage';
 
 export default function App() {
 
@@ -14,7 +13,7 @@ export default function App() {
     main.addEventListener('scroll', (e) => {
       const scrollPos = e.target.scrollTop
       const windowHeight = window.innerHeight
-            
+
       switch(scrollPos){
         case 0:
           body.classList = 'fp-issue5'
