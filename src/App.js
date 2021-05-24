@@ -71,17 +71,17 @@ export default function App() {
                   <>
                     <p className="largeText">Issue #{issue.issueNumber}</p>
                     <p className="buy smallText">
-                      <a href={issue.buyLink}>BUY HERE</a>
+                      <a href={issue.buyLink} target="_blank" rel="noreferrer">BUY HERE</a>
                     </p>
                     <p className="smallText">
-                      or in <a href={data.selectedStores}>selected stores</a>.
+                      or in <a href={data.selectedStores} target="_blank" rel="noreferrer">selected stores</a>.
                     </p>
                   </>
                 ) : (
                   <>
                     <p className="largeText">Issue #{issue.issueNumber} is sold out.</p>
                     <p className="smallText">
-                      If you are lucky, you may get the last pieces in <a href={data.selectedStores}>selected stores</a>.
+                      If you are lucky, you may get the last pieces in <a href={data.selectedStores} target="_blank" rel="noreferrer">selected stores</a>.
                     </p>
                   </>
                 )}
