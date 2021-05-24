@@ -62,6 +62,7 @@ export default function App() {
         {data.magazines.map( issue => 
           <div 
             className="wrapper" 
+            id={`issue` + issue.issueNumber}
             key={uuid()} 
           >
             <div className="issue">
