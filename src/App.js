@@ -6,17 +6,52 @@ import {SectionsContainer, Section} from 'react-fullpage';
 
 export default function App() {
 
-  //fullpage
-  let options = {
-    activeClass: 'active',
-    anchors: ['issue5', 'issue4', 'issue3', 'issue2', 'issue1'],
-    arrowNavigation: true,
-    delay: 1000,
-    navigation: false,
-    scrollBar: window.innerWidth >= 992 && window.innerHeight >= 650 ? false : true,
-    autoScrolling: true,
-    verticalAlign: true,
-  }
+  //change backgroundcolor when scroll-snap is active
+  useEffect( () => {
+    const main = document.getElementById('main')
+    const body = document.body
+
+    main.addEventListener('scroll', (e) => {
+      const scrollPos = e.target.scrollTop
+      const windowHeight = window.innerHeight
+            
+      switch(scrollPos){
+        case 0:
+          body.classList = 'fp-issue5'
+          break
+        case windowHeight:
+          body.classList = 'fp-issue4'
+          break
+        case 2*windowHeight:
+          body.classList = 'fp-issue3'
+          break
+        case 3*windowHeight:
+          body.classList = 'fp-issue2'
+          break
+        case 4*windowHeight:
+          body.classList = 'fp-issue1'
+          break
+        default:
+          break
+      }
+    }) 
+  })
+
+  //change color when scroll-snap is inactive
+  useEffect( () => {
+    const body = document.body
+
+    window.addEventListener('scroll', (e) => {
+      const scrollPos = e.target.scrollingElement.scrollTop
+      const windowHeight = window.innerHeight
+
+      if (scrollPos < 0.6*windowHeight) body.classList = 'fp-issue5'
+      else if (scrollPos < 1.6*windowHeight) body.classList = 'fp-issue4'
+      else if (scrollPos < 2.6*windowHeight) body.classList = 'fp-issue3'
+      else if (scrollPos < 3.6*windowHeight) body.classList = 'fp-issue2'
+      else body.classList = 'fp-issue1'
+    })
+  })
 
   return (
     <>
@@ -24,9 +59,9 @@ export default function App() {
         <img src={data.header} alt={data.headerDescription} />
       </header>
 
-      <SectionsContainer {...options}>
+      <main id="main">
         {data.magazines.map( issue => 
-          <Section 
+          <div 
             className="wrapper" 
             key={uuid()} 
           >
@@ -54,9 +89,9 @@ export default function App() {
                 
               </div>  
             </div>
-          </Section>
+          </div>
         )}
-      </SectionsContainer>
+      </main>
                  
       <footer>
         <div className="description largeText">

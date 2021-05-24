@@ -11,10 +11,9 @@
     color: $black;
 }
 
-body {
-    background-color: $lightblue;
-}
+body { background-color: $lightblue; }
 
+//header
 header {
     position: absolute;
     left: 15px;
@@ -25,11 +24,29 @@ header {
     img { width: 160px; }
 }
 
+//links
 .description a {
     color: $black;
     text-decoration: underline;
 }
 
+//text styling
+.smallText {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 22px;
+    margin-bottom: 1em;
+    padding-top: 3px;
+}
+
+.largeText {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+    margin-bottom: 1em;
+}
+
+//main content
 .wrapper {
     height: 100vh;
     display: flex;
@@ -55,21 +72,7 @@ header {
     }
 }
 
-.smallText {
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 22px;
-    margin-bottom: 1em;
-    padding-top: 3px;
-}
-
-.largeText {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 25px;
-    margin-bottom: 1em;
-}
-
+//footer
 footer {
     .description { 
         text-align: center; 
@@ -111,11 +114,28 @@ footer {
     }
 }
 
-.fp-issue1 { background: $red;}
-.fp-issue2 { background: $darkblue; }
-.fp-issue3 { background: $yellow; }
-.fp-issue4 { background: $orange; }
-.fp-issue5 { background: $lightblue; }
+//background-colors
+.fp-issue1 { 
+    background: $red;
+    transition: all 700ms ease 0s;
+}
+.fp-issue2 { 
+    background: $darkblue; 
+    transition: all 700ms ease 0s;
+}
+.fp-issue3 { 
+    background: $yellow; 
+    transition: all 700ms ease 0s;
+}
+.fp-issue4 { 
+    background: $orange; 
+    transition: all 700ms ease 0s;
+}
+.fp-issue5 { 
+    background: $lightblue; 
+    transition: all 700ms ease 0s;
+}
+
 
 @media screen and (min-width: 543px) {
     .wrapper .issue .cover img { width: 420px; }
@@ -149,10 +169,26 @@ footer {
 
 @media screen and (min-width: 992px) and (min-height: 650px) {
     //scrolling
-
     ::-webkit-scrollbar {
         width: 0;
         height: 0;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    main {
+        overflow: scroll;
+        height: 100vh;
+        scroll-snap-type: y mandatory;
+    
+        .wrapper {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+        }
     }
 
     //main content
@@ -189,3 +225,4 @@ footer {
         }
     }
 }
+
