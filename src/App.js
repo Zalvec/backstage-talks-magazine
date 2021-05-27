@@ -31,8 +31,9 @@ export default function App() {
   function scrollPosIfStatement(scrollPos) {
     let windowHeight = window.innerHeight
 
-    //Min-height of each issue. Value of 350 is set in SCSS variables
-    if (windowHeight <= 650) windowHeight = 650
+    //Min-height of each issue. Value of 750 is set in SCSS variables
+    //650 represents max-height of the screen without scroll-snap
+    if (windowHeight <= 650) windowHeight = 750
 
     if (scrollPos < 0.5*windowHeight) {
       const num = 5
