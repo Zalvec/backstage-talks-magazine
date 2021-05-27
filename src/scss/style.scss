@@ -211,7 +211,7 @@ footer {
             bottom: 0;
             left: 0;
             
-            width: 320px;
+            width: 300px;
         }
         .info {
             position: unset;
@@ -229,3 +229,6 @@ footer {
     }
 }
 
+@media screen and (min-width: 1060px) and (min-height: 650px) {
+    footer .description { width: 320px; }
+}
