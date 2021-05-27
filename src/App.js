@@ -29,7 +29,10 @@ export default function App() {
 
   //If statement when scrolling to implement the right background-color and 'active' class
   function scrollPosIfStatement(scrollPos) {
-    const windowHeight = window.innerHeight
+    let windowHeight = window.innerHeight
+
+    //Min-height of each issue. Value of 350 is set in SCSS variables
+    if (windowHeight <= 650) windowHeight = 650
 
     if (scrollPos < 0.5*windowHeight) {
       const num = 5
